@@ -1,6 +1,8 @@
 {
   "development": {
-    "database": "auth_boilerplate",
+    "username": "postgres",
+    "password": "anwaar",
+    "database": "anime_database",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },

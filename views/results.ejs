@@ -1,0 +1,11 @@
+<h1>Your Search</h1>
+
+<ul>
+    <%animeRec.forEach((t, id)=>{%>
+        <%let anime_id = t.mal_id %>
+        <a href="/details/<%=anime_id %>"> 
+        <li><%=t.title%></li>
+        </a>
+   <% })%>
+
+</ul>

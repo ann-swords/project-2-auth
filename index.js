@@ -25,12 +25,13 @@ app.use(async (req, res, next)=>{
 
 // CONTROLLERS
 app.use('/users', require('./controllers/users'))
+app.use('/', require('./controllers/home'))
 
 // ROUTES
-app.get('/', (req, res)=>{
-    res.render('home')
-})
+// app.get('/', (req, res)=>{
+//     res.render('home')
+// })
 
-app.listen(8000, ()=>{
+app.listen(3000, ()=>{
     console.log('Project 2 Express Authentication')
 })
