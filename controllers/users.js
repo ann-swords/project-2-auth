@@ -56,4 +56,19 @@ router.get('/profile', (req, res)=>{
     res.render('users/profile.ejs')
 })
 
+// displays user's reviews
+router.get('/userReviews', (req, res)=>{
+    db.review.findAll({
+        where:{
+            userId: res.locals.user.dataValues.id
+        }
+    })
+    .then((review) => {
+        res.render('users/userReviews.ejs', {reviews: review})
+      })
+      .catch((error) => {
+        res.status(400)
+      })
+})
+
 module.exports = router

@@ -4,10 +4,9 @@ const axios = require('axios')
 const db = require('../models')
 
 
-//Show the anime details and  reviews
+//Show the anime details and its reviews
 router.get('/:anime_id', (req, res)=>{
     let animeUrl = `https://api.jikan.moe/v4/anime/${req.params.anime_id}`
-    // Use request to call the API
     axios.get(animeUrl)
     .then(apiResponse => {
         let anime = apiResponse.data.data

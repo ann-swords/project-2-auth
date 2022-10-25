@@ -1,0 +1,14 @@
+<h1>My Reviews</h1>
+
+<!--  -->
+
+<ul>
+    <%reviews.forEach((review)=>{%>
+        <li>Title: <%=review.title%></li>
+        <li>Content: <%=review.content%></li>
+        <p>
+            <strong><%= moment(review.createdAt).calendar() %></strong>
+          </p>
+        <hr>
+    <%})%>
+</ul>

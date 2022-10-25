@@ -4,6 +4,7 @@ const ejsLayouts = require('express-ejs-layouts')
 const cookieParser = require('cookie-parser')
 const db = require('./models')
 const cryptoJS = require('crypto-js')
+const moment = require('moment')
 require('dotenv').config()
 
 // MIDDLEWARE
@@ -11,6 +12,12 @@ app.set('view engine', 'ejs')
 app.use(ejsLayouts)
 app.use(cookieParser())
 app.use(express.urlencoded({extended: false}))
+
+// middleware that allows us to access the 'moment' library in every EJS view
+app.use((req, res, next) => {
+    res.locals.moment = moment
+    next()
+  })
 
 // AUTHENTICATION MIDDLEWARE
 app.use(async (req, res, next)=>{
