@@ -4,17 +4,29 @@ const axios = require('axios')
 const db = require('../models')
 
 
-//Show anime details
+//Show the anime details and  reviews
 router.get('/:anime_id', (req, res)=>{
     let animeUrl = `https://api.jikan.moe/v4/anime/${req.params.anime_id}`
     // Use request to call the API
     axios.get(animeUrl)
     .then(apiResponse => {
         let anime = apiResponse.data.data
-        console.log("The RESULT::: ",apiResponse.data.data)
-        res.render('details.ejs', {animeRec: anime})
+        // console.log("The RESULT::: ",apiResponse.data.data)
+        db.review.findAll({
+            where:{
+                animeId: req.params.anime_id
+            }
+        })
+    .then((review) => {
+      res.render('details.ejs', {reviews: review,  animeRec: anime})
+    })
+    .catch((error) => {
+      res.status(400).render('main/404')
+    })
     })
     .catch(err=>res.send(err))
+
+    
 })
 
 
@@ -23,8 +35,9 @@ router.post('/:anime_id', (req, res)=>{
     db.review.create({
         title: req.body.title,
         content: req.body.content,
-        userId: req.body
-        
+        userId: req.body.user_id,
+        animeId: req.params.anime_id,
+        include: [db.user, db.anime]
     })
     .then((post) => {
             res.redirect(`/details/${req.params.anime_id}`)
@@ -33,6 +46,9 @@ router.post('/:anime_id', (req, res)=>{
     res.status(400).render('main/404')
     })
 })
+
+
+
 
 
 module.exports = router

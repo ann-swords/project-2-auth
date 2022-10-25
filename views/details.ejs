@@ -25,3 +25,10 @@ src="<%=animeRec.trailer.embed_url%>">
 </form>
 
 <!-- List the review here! -->
+<ul>
+    <%reviews.forEach((review)=>{%>
+        <li>Title: <%=review.title%></li>
+        <li>Content: <%=review.content%></li>
+        <hr>
+    <%})%>
+</ul>
