@@ -16,3 +16,12 @@ src="<%=animeRec.trailer.embed_url%>">
 </iframe>
 
 
+<hr>
+
+<h1>Reviews: </h1>
+<form action="/reviews/new" method="GET">
+    <input type="hidden" value="<%=animeRec.mal_id %>" name="anime_id">
+   <button type="submit">Write a Review</button>
+</form>
+
+<!-- List the review here! -->

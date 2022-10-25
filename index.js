@@ -26,6 +26,8 @@ app.use(async (req, res, next)=>{
 // CONTROLLERS
 app.use('/users', require('./controllers/users'))
 app.use('/', require('./controllers/home'))
+app.use('/details', require('./controllers/details'))
+app.use('/reviews', require('./controllers/reviews'))
 
 // ROUTES
 // app.get('/', (req, res)=>{

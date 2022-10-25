@@ -29,17 +29,7 @@ router.get('/', (req, res)=>{
         })
 
 
-    router.get('/details/:anime_id', (req, res)=>{
-        let animeUrl = `https://api.jikan.moe/v4/anime/${req.params.anime_id}`
-        // Use request to call the API
-        axios.get(animeUrl)
-        .then(apiResponse => {
-            let anime = apiResponse.data.data
-            console.log("The RESULT::: ",apiResponse.data.data)
-            res.render('details.ejs', {animeRec: anime})
-        })
-        .catch(err=>res.send(err))
-        })
+
 
 module.exports = router
 
