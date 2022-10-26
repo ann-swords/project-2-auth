@@ -16,12 +16,12 @@ router.get('/:anime_id', (req, res)=>{
                 animeId: req.params.anime_id
             }
         })
-    .then((review) => {
-      res.render('details.ejs', {reviews: review,  animeRec: anime})
-    })
-    .catch((error) => {
-      res.status(400).render('main/404')
-    })
+        .then((review) => {
+        res.render('details.ejs', {reviews: review,  animeRec: anime})
+        })
+        .catch((error) => {
+        res.status(400).render('main/404')
+        })
     })
     .catch(err=>res.send(err))
 

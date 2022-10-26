@@ -29,8 +29,21 @@ router.get('/edit/:r_id', (req, res) =>{
 
 //Edit the review content
 router.put('/:r_id', (req, res)=>{
-    // Add the database things to save the new data into the database.
-     //redirect to home page
+     db.review.update({
+        title: req.body.userName,
+        content: req.body.content
+     },
+     {  where: {
+        id: req.params.r_id
+     }
+    })
+    .then((review) => {
+    res.render('details.ejs', {reviews: review})
+    })
+    .catch((error) => {
+    res.status(400).render('main/404')
+    })
+
     res.redirect('/users/userReviews')
 })
 
