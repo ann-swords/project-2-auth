@@ -32,7 +32,7 @@ router.get('/:anime_id', (req, res)=>{
 //Add a new review to the anime page
 router.post('/:anime_id', (req, res)=>{
     db.review.create({
-        title: req.body.title,
+        title: req.body.userName,
         content: req.body.content,
         userId: req.body.user_id,
         animeId: req.params.anime_id,
@@ -45,9 +45,6 @@ router.post('/:anime_id', (req, res)=>{
     res.status(400).render('main/404')
     })
 })
-
-
-
 
 
 module.exports = router

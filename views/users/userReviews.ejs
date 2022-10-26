@@ -2,7 +2,8 @@
 
 <ul>
     <%reviews.forEach((review)=>{%>
-        <li>Title: <%=review.title%></li>
+        <a href="/reviews/edit/<%=review.id%>">Edit Review</a>
+        <li><a href="/details/<%=review.animeId%>">Anime Details</a></li>
         <li>Content: <%=review.content%></li>
         <p>
             <strong><%= moment(review.createdAt).calendar() %></strong>

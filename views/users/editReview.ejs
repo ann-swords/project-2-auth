@@ -1,0 +1,18 @@
+<h1>Edit my review:</h1>
+
+<!-- The review Form here: -->
+<form action="/reviews/<%=rev_Id%>/?_method=PUT" method="POST">
+
+    <div>
+        <label for="userName">Name</label>
+        <input type="text" id="userName" name="userName" value="<%=reviews.title%>" required>
+    </div>
+
+    <br>
+
+    <div>
+        <label for="content">Content</label>
+        <input type="text" id="content" name="content"  value="<%=reviews.content%>" required>
+    </div>
+    <button>Update Review</button>
+  </form>
