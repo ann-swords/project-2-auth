@@ -5,8 +5,15 @@ const db = require('../models')
 
 // displays the page to write a new review
 router.get('/new', (req,res)=>{
-    let anime_id = req.query.anime_id
-    res.render('reviews.ejs', {anime_id})
+    if (req.query.user_id === null){
+        console.log("you have to log in first luv!");
+        res.render('main/404')
+    }
+    else{
+        let anime_id = req.query.anime_id
+        res.render('reviews.ejs', {anime_id})
+    }
+    
 })
     
 
@@ -29,6 +36,7 @@ router.get('/edit/:r_id', (req, res) =>{
 
 //Edit the review content
 router.put('/:r_id', (req, res)=>{
+    rev_Id = req.params.r_id
      db.review.update({
         title: req.body.userName,
         content: req.body.content
@@ -38,14 +46,30 @@ router.put('/:r_id', (req, res)=>{
      }
     })
     .then((review) => {
-    res.render('details.ejs', {reviews: review})
+    res.render('details.js', {reviews: review, rev_Id})
     })
     .catch((error) => {
-    res.status(400).render('main/404')
+    console.log(error)
     })
 
     res.redirect('/users/userReviews')
 })
 
+//Delete the review
+router.delete('/delete/:r_id', (req, res)=>{
+    rev_Id = req.params.r_id
+    db.review.destroy({
+        where: {
+            id: req.params.r_id
+        }
+    })
+    .then((review) => {
+    res.render('users/userReviews', {reviews: review, rev_Id})
+    })
+    .catch((error) => {
+    console.log(error)
+    })
+    res.redirect('/users/userReviews')
+})
 
 module.exports = router

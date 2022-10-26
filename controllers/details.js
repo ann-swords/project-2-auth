@@ -24,8 +24,6 @@ router.get('/:anime_id', (req, res)=>{
         })
     })
     .catch(err=>res.send(err))
-
-    
 })
 
 
