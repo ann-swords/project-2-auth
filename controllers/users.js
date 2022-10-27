@@ -10,7 +10,7 @@ router.get('/new', (req, res)=>{
 })
 
 router.post('/', async (req, res)=>{
-    const [newUser, created] = await db.user.findOrCreate({where:{email: req.body.email}})
+    const [newUser, created] = await db.user.findOrCreate({where:{email: req.body.email, userName: req.body.name}})
     if(!created){
         console.log('user already exists')
         res.render('users/login.ejs', {error: 'Looks like you already have an account! Try logging in :)'})
@@ -70,5 +70,21 @@ router.get('/userReviews', (req, res)=>{
         res.status(400)
       })
 })
+
+// displays user's favorite anime
+// router.get('/favorites', (req, res)=>{
+//     // db.anime.findAll({
+//     //     where:{
+//     //         userId: res.locals.user.dataValues.id
+//     //     }
+//     // })
+//     // .then((review) => {
+//     //     res.render('users/favorites.ejs', {reviews: review})
+//     //   })
+//     //   .catch((error) => {
+//     //     res.status(400)
+//     //   })
+//     res.render('users/favorites.ejs')
+// })
 
 module.exports = router

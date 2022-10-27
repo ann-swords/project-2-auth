@@ -4,8 +4,38 @@ const axios = require('axios')
 const db = require('../models')
 
 
+//add anime to favorite
+router.post('/addToFavorite',  async (req, res)=>{
+//    try {
+//     const [anime, animeCreated] = await db.anime.findOrCreate({
+//         where: {
+//             aniListId: req.body.animeId,
+//             name: req.body.name,
+//             image: req.body.image   
+//         }
+//     })
+//     const user = await db.user.findAll({
+//         where:{
+//             id: res.locals.user.dataValues.id
+//         }
+//     })
+
+//     await user.addAnime(anime)
+
+//     res.render('users/favorites.ejs')
+//     // console.log("req Body:", animes)
+//    }
+//     catch (error) {
+//     // res.status(400).render('main/404')
+//     res.render('users/favorites.ejs')
+//    }
+//     // console.log("req Body:", req.body)
+    res.render('users/favorites.ejs')
+})
+
+
 //Show the anime details and its reviews
-router.get('/:anime_id', (req, res)=>{
+router.get('/:anime_id', async (req, res)=>{
     let animeUrl = `https://api.jikan.moe/v4/anime/${req.params.anime_id}`
     axios.get(animeUrl)
     .then(apiResponse => {
@@ -26,11 +56,10 @@ router.get('/:anime_id', (req, res)=>{
     .catch(err=>res.send(err))
 })
 
-
 //Add a new review to the anime page
-router.post('/:anime_id', (req, res)=>{
+router.post('/:anime_id', async (req, res)=>{
     db.review.create({
-        title: req.body.userName,
+        title: req.body.title,
         content: req.body.content,
         userId: req.body.user_id,
         animeId: req.params.anime_id,
@@ -43,6 +72,7 @@ router.post('/:anime_id', (req, res)=>{
     res.status(400).render('main/404')
     })
 })
+
 
 
 module.exports = router

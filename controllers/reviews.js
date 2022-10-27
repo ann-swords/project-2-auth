@@ -38,7 +38,7 @@ router.get('/edit/:r_id', (req, res) =>{
 router.put('/:r_id', (req, res)=>{
     rev_Id = req.params.r_id
      db.review.update({
-        title: req.body.userName,
+        title: req.body.title,
         content: req.body.content
      },
      {  where: {
