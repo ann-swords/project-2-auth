@@ -7,8 +7,10 @@
     <%anime.forEach((fav)=>{%> 
 
         <div>
-            <img src="<%= fav.image%> " alt="<%=fav.name%> poster">
-            <li> <%=fav.name%> </li>
+            <a href="/details/<%=fav.aniListId %>">
+                <img src="<%= fav.image%> " alt="<%=fav.name%> poster">
+                <li> <%=fav.name%> </li>
+             </a>
         </div>
     <%}) %>
 </ul> 

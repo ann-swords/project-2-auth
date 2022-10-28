@@ -3,6 +3,9 @@
         display: inline-block;
         margin: 0 10px;
     }
+    body{
+        background-color: antiquewhite;
+    }
 </style>
 
 
@@ -25,15 +28,51 @@
 <h3>seasonal Anime To watch </h3>
 <!-- use https://api.jikan.moe/v4/seasons/now To show this season anime. -->
 <!-- Shows only 5 seasonal anime -->
-<ul>
-    <%animeRec.forEach((a, index)=>{%>
-        <% if(index < 6){ %>
-            <div>
-                <img src="<%= a.images.jpg.image_url%> " alt="">
-                <li> <%=a.title%> </li>
-            </div>
-            
-         <%}%>
-     <%})%>
-</ul>
 
+
+
+<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        
+     
+
+      <%animeRec.forEach((a, index)=>{%>
+        <% if(index < 8) {%> 
+            <%if(index === 0){%>
+            <div class="carousel-item active" data-bs-interval="10000">
+                <img src="<%= a.images.jpg.image_url%> " class="d-block w-100" >
+                
+                <div class="carousel-caption d-none d-md-block">
+                    <h5><%=a.title%></h5>
+                </div>
+            
+            </div>
+           
+
+        <%} else { %>
+            <div class="carousel-item ">
+                <img src="<%= a.images.jpg.image_url%> " class="d-block w-100" >
+                
+                <div class="carousel-caption d-none d-md-block">
+                    <h5><%=a.title%></h5>
+                </div>
+            
+            </div>
+            <%}%>
+            <%}%>
+         
+    <%})%>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+
+
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+
+  </div>
+ 

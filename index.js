@@ -14,6 +14,7 @@ app.use(ejsLayouts)
 app.use(cookieParser())
 app.use(express.urlencoded({extended: false}))
 app.use(methodOverride('_method'))
+app.use(express.static(__dirname + '/public/'))
 
 // middleware that allows us to access the 'moment' library in every EJS view
 app.use((req, res, next) => {
