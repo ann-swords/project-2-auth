@@ -82,7 +82,7 @@ router.get('/favorites', async (req, res)=>{
 
         const anime = await user.getAnimes()
         res.render('users/favorites.ejs', {anime})
-        // console.log(`${anime.name} belongs to this mf user: ${user.userName}.`)
+        // console.log(`${anime.name} belongs to this user: ${user.userName}.`)
     } catch (error) {
         console.log(error)
     }
