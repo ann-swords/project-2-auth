@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.anime.hasMany(models.review)
-      models.anime.belongsToMany(models.user, {through: 'userFavAnime'})
+      models.anime.belongsToMany(models.user, {through: 'favorite'})
     }
   }
   anime.init({

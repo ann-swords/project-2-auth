@@ -1,3 +1,14 @@
 <!-- List user's favourite anime here! -->
 
 <h1>My favorite Anime</h1>
+<hr>
+
+<ul>
+    <%anime.forEach((fav)=>{%> 
+
+        <div>
+            <img src="<%= fav.image%> " alt="<%=fav.name%> poster">
+            <li> <%=fav.name%> </li>
+        </div>
+    <%}) %>
+</ul> 

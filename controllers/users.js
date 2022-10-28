@@ -67,24 +67,25 @@ router.get('/userReviews', (req, res)=>{
         res.render('users/userReviews.ejs', {reviews: review})
       })
       .catch((error) => {
-        res.status(400)
+        res.status(400).render('main/404')
+        console.log(error)
       })
 })
 
 // displays user's favorite anime
-// router.get('/favorites', (req, res)=>{
-//     // db.anime.findAll({
-//     //     where:{
-//     //         userId: res.locals.user.dataValues.id
-//     //     }
-//     // })
-//     // .then((review) => {
-//     //     res.render('users/favorites.ejs', {reviews: review})
-//     //   })
-//     //   .catch((error) => {
-//     //     res.status(400)
-//     //   })
-//     res.render('users/favorites.ejs')
-// })
+router.get('/favorites', async (req, res)=>{
+    try {
+        const user  = await db.user.findOne({
+            where:{id: res.locals.user.dataValues.id},
+            include: [db.anime]
+        })
+
+        const anime = await user.getAnimes()
+        res.render('users/favorites.ejs', {anime})
+        // console.log(`${anime.name} belongs to this mf user: ${user.userName}.`)
+    } catch (error) {
+        console.log(error)
+    }
+})
 
 module.exports = router

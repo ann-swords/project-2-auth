@@ -6,7 +6,7 @@
 
 <!-- include add to favourite btton! -->
 <!-- It should save only the anime name, image and ID and user ID! -->
-<form action="/details/addToFavorite" method="POST">
+<form action="/details/addToFavorite/<%=animeRec.mal_id%>" method="POST">
     <input type="hidden" value="<%=animeRec.mal_id %>" name="anime_id">
     <input type="hidden" value="<%=animeRec.title %>" name="name">
     <input type="hidden" value="<%=animeRec.images.jpg.image_url %>" name="image">

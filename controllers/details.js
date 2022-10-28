@@ -4,33 +4,30 @@ const axios = require('axios')
 const db = require('../models')
 
 
-//add anime to favorite
-router.post('/addToFavorite',  async (req, res)=>{
-//    try {
-//     const [anime, animeCreated] = await db.anime.findOrCreate({
-//         where: {
-//             aniListId: req.body.animeId,
-//             name: req.body.name,
-//             image: req.body.image   
-//         }
-//     })
-//     const user = await db.user.findAll({
-//         where:{
-//             id: res.locals.user.dataValues.id
-//         }
-//     })
-
-//     await user.addAnime(anime)
-
-//     res.render('users/favorites.ejs')
-//     // console.log("req Body:", animes)
-//    }
-//     catch (error) {
-//     // res.status(400).render('main/404')
-//     res.render('users/favorites.ejs')
-//    }
-//     // console.log("req Body:", req.body)
-    res.render('users/favorites.ejs')
+// //add anime to favorite
+router.post('/addToFavorite/:anime_id',  async (req, res)=>{
+    try {
+        const [anime, animeCreated] = await db.anime.findOrCreate({
+            where: {
+                aniListId: req.body.anime_id,
+                name: req.body.name,
+                image: req.body.image   
+            }
+        })
+        const user = await db.user.findAll({
+            where:{
+                id: res.locals.user.dataValues.id
+            }
+        })
+        await anime.addUser(user)
+        res.redirect(`/details/${req.params.anime_id}`)
+        console.log("Added to Favorite Sucssefully!!!! 😺")
+    
+       }
+        catch (error) {
+        res.status(400).render('main/404')
+        console.log(error)
+       }
 })
 
 
