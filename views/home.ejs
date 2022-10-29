@@ -1,7 +1,4 @@
 <style>
-body{
-    background-color: rgb(247, 211, 252);
-}
 img{
     margin-left: auto;
     margin-right: auto;
@@ -30,17 +27,46 @@ img{
     margin-right: auto;
     display: block;
 }
+#img-header{
+    width: 100%;
+    height: 300px;
+}
+
+#header-div{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#search-div{
+    position: absolute;
+    top: 25%;
+    left: 30%;
+}
+#userSearch{
+    width: 420px;
+    height: 60px;
+}
+.input-group{
+    width: auto;
+}
 </style>
 
 
-<h2>Home</h2>
 
-<!-- Search anime: -->
-<form action="/results" method="GET">
-    <label for="userSearch">Anime Name:</label>
-    <input type="text" id="userSearch" name="searchAnime">
-    <button type="submit">Search!</button>
-</form>
+<div id="header-div">
+
+    <div class="input-group" id="search-div">
+        <form class="d-flex" role="search" action="/results" method="GET" >
+            <input type="text" class="form-control me-2" type="search" id="userSearch" name="searchAnime" placeholder="Enter Anime Name">
+            <button class="btn btn-light" type="submit">Search!</button>
+        </form>
+    </div>
+
+
+    <img  id="img-header" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5264f490-f646-4658-82ed-cb53ab83be0d/dfgkp8z-d9df02c8-982a-42aa-bd0a-bdb0e2a85a2b.png/v1/fill/w_1280,h_355,strp/jojo1_by_aslynlynx_dfgkp8z-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MzU1IiwicGF0aCI6IlwvZlwvNTI2NGY0OTAtZjY0Ni00NjU4LTgyZWQtY2I1M2FiODNiZTBkXC9kZmdrcDh6LWQ5ZGYwMmM4LTk4MmEtNDJhYS1iZDBhLWJkYjBlMmE4NWEyYi5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.dH6ry3-lnV-CQj8DIz6NcZ1CFTlVdEjoX8lhSkMjqKQ" alt="jojo's bizarre adventure poster">
+</div>
+ <!-- Search anime: -->
+
 
 <!-- Search anime scene by Image -->
 <form action="/imageSearchResults" method="get">
@@ -55,31 +81,34 @@ img{
 
 
 <!-- Try one! -->
-
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
       
         <div class="carousel-inner">
             <%animeRec.forEach((a, index)=>{%>
                 <% if(index < 8) {%> 
                     <%if(index === 0){%>
-                    <div class="carousel-item active" data-bs-interval="1500">
-                        <img class="season_img" src="<%= a.images.jpg.image_url%>" class="d-block w-100" alt="<%=a.title%> poster">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5><%=a.title%></h5>
-                            <p>Episodes: <%=a.episodes%></p>
-                        </div>
+                        <a href="/details/<%=a.mal_id %>">
+                        <div class="carousel-item active" data-bs-interval="1500">
+                            <img class="season_img" src="<%= a.images.jpg.image_url%>" class="d-block w-100" alt="<%=a.title%> poster">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5><%=a.title%></h5>
+                                <p>Episodes: <%=a.episodes%></p>
+                            </div>
+                        </a>
                      
                     </div>
                   
                 
                      <%}else{%> 
-                    <div class="carousel-item">
-                        <img class="season_img" src="<%= a.images.jpg.image_url%>" class="d-block w-100" alt="<%=a.title%> poster">
-                        <div class="carousel-caption d-none d-md-block">
-                        <h5><%=a.title%></h5>
-                        <p>Episodes: <%=a.episodes%></p>
+                        <a href="/details/<%=a.mal_id %>">
+                        <div class="carousel-item">
+                            <img class="season_img" src="<%= a.images.jpg.image_url%>" class="d-block w-100" alt="<%=a.title%> poster">
+                            <div class="carousel-caption d-none d-md-block">
+                            <h5><%=a.title%></h5>
+                            <p>Episodes: <%=a.episodes%></p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
 
                     <%}%> 
 

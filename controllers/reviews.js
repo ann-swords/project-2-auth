@@ -50,6 +50,7 @@ router.put('/:r_id', (req, res)=>{
     })
     .catch((error) => {
     console.log(error)
+    res.status(400).render('main/404')
     })
 
     res.redirect('/users/userReviews')
@@ -68,6 +69,7 @@ router.delete('/delete/:r_id', (req, res)=>{
     })
     .catch((error) => {
     console.log(error)
+    res.status(400).render('main/404')
     })
     res.redirect('/users/userReviews')
 })

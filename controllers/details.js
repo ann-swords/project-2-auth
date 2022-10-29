@@ -50,7 +50,7 @@ router.get('/:anime_id', async (req, res)=>{
         res.status(400).render('main/404')
         })
     })
-    .catch(err=>res.send(err))
+    .catch(err=>render('main/404'))
 })
 
 //Add a new review to the anime page

@@ -84,6 +84,7 @@ router.get('/favorites', async (req, res)=>{
         res.render('users/favorites.ejs', {anime})
         // console.log(`${anime.name} belongs to this user: ${user.userName}.`)
     } catch (error) {
+        res.status(400).render('main/404')
         console.log(error)
     }
 })

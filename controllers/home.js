@@ -44,7 +44,8 @@ router.get('/imageSearchResults', (req,res)=>{
         res.render('imageSearch.ejs', {pic: response.data})
         // console.log(response.data)
     }).catch(function (error) {
-        console.error(error);
+        console.error(error)
+        res.status(400).render('main/404')
     });
 })
 

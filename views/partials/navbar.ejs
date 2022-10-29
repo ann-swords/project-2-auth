@@ -1,11 +1,57 @@
-<nav>
-  <ul>
-      <% if(user){ %>
-          <li><a href="/users/profile">Profile</a></li>
-          <li><a href="/users/logout">Logout</a></li>
-      <% } else { %> 
-          <li><a href="/users/new">Sign Up</a></li>
-          <li><a href="/users/login">Login</a></li>
-      <% } %>
-  </ul>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+    #imgg{
+    width: 20vw;
+    height: auto;
+  }
+  #title-div{
+    position: absolute;
+    left: auto;
+    width: auto;
+    height: auto;
+    border: 3px solid blue;
+  }
+  .navbar-nav{
+    flex-direction: row;
+    margin-right: 2%;
+    
+  }
+  .nav-item{
+    margin-left: 50px;
+    
+  }
+
+  .navbar-nav .nav-link.active, .navbar-nav .show>.nav-link{
+    color: #fd23c3;
+    font-family: 'Orbitron', sans-serif;
+  }
+</style>
+
+
+<!-- <nav>
+  <div id="title-div">
+    <a href='/'><img id="imgg" src="https://see.fontimg.com/api/renderfont4/Ea5On/eyJyIjoiZnMiLCJoIjo2MiwidyI6MTUwMCwiZnMiOjQxLCJmZ2MiOiIjRjJCNjNEIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/QW5pbWUgU2VrYWk/space-monkey-bold.png" alt="Anime Sekai"></a>
+</div>  -->
+
+
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid" style=" margin-left: 0px;">
+
+    <a class="navbar-brand" href="/">
+    <img id="imgg" src="https://see.fontimg.com/api/renderfont4/Ea5On/eyJyIjoiZnMiLCJoIjo4NywidyI6MTUwMCwiZnMiOjU4LCJmZ2MiOiIjRjIzREJCIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/QW5pbWUgU2VrYWk/space-monkey-bold.png" alt="Anime Sekai">
+    </a>
+
+      <ul class="navbar-nav">
+        <% if(user){ %>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="/users/profile">Profile</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="/users/logout">Logout</a></li>
+        <% } else { %> 
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="/users/new">Sign Up</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="/users/login">Login</a></li>
+        <%}%>
+      </ul>
+   
+  </div>
 </nav>
+
+
