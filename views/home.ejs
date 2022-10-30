@@ -49,6 +49,11 @@ img{
 .input-group{
     width: auto;
 }
+h3{
+    text-align: center;
+    /* text-shadow:3px 1px rgb(255, 0, 200); */
+}
+
 </style>
 
 
@@ -58,7 +63,7 @@ img{
     <div class="input-group" id="search-div">
         <form class="d-flex" role="search" action="/results" method="GET" >
             <input type="text" class="form-control me-2" type="search" id="userSearch" name="searchAnime" placeholder="Enter Anime Name">
-            <button class="btn btn-light" type="submit">Search!</button>
+            <button class="btn btn-light" type="submit" id="btns">Search!</button>
         </form>
     </div>
 
@@ -68,8 +73,9 @@ img{
  <!-- Search anime: -->
 
 <!-- Seasonal Anime Carsousel: -->
+<br>
 <h3>seasonal Anime To watch </h3>
-
+<br>
 
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
       

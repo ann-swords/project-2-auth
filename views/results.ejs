@@ -1,25 +1,44 @@
 <style>
- .card{
-   display: inline-block;
-   margin: 5px;
-   font-size: 12px;
- }
- img{
-    height: 250px;
- }
+    #anime-search-cards{
+        padding-left: 75px;
+    }
+    .card{
+        display: inline-block;
+        margin: 10px;
+
+    }
+    img{
+        height: 300px;
+    }
+    a:link { 
+        text-decoration: none; 
+    }
+    .card-body{
+        font-size: 13px;
+        text-align: center;
+        text-overflow: ellipsis;
+        overflow: hidden; 
+        white-space: nowrap;
+        color: white;
+    }
+    span{
+        color: rgb(255, 186, 67);
+    }
 </style>
 
-<h1>You Searched For: <%=userSearch%></h1>
-
+<h1>You Searched For: <span> <%=userSearch%></span></h1>
+<hr>
 <div id="anime-search-cards">
     <%animeRec.forEach((t, id)=>{%>
         <%let anime_id = t.mal_id %>
-    <div class="card" style="width: 12rem;">
+        <a href="/details/<%=anime_id %>" class="">
+    <div class="card bg-dark" style="width: 12rem;">
         <img src="<%=t.images.jpg.image_url%>" class="card-img-top" alt="...">
         <div class="card-body">
-            <a href="/details/<%=anime_id %>" class="card-link"><%=t.title%></a>
+            <%=t.title%>
         </div>
       </div>
+    </a>    
     <% })%>
 
 </div>

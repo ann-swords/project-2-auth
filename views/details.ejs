@@ -1,3 +1,6 @@
+<style>
+   
+</style>
 <!-- Anime Details will be here: -->
 
 <!-- Add more details for anime later... -->
@@ -37,7 +40,7 @@ src="<%=animeRec.trailer.embed_url%>">
 <!-- List the review here! -->
 <ul>
     <%reviews.forEach((review)=>{%>
-        <strong><%=user.userName%></strong>
+        <strong><%=review.userId%></strong>
         <li>Title: <%=review.title%></li>
         <li>Content: <%=review.content%></li>
         <p>
