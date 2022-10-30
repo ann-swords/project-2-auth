@@ -1,10 +1,42 @@
-<h2>Hello, <%= user.userName%> :)</h2>
+<style>
+    
+    span{
+        color: rgb(255, 186, 67);
+    }
+    h2{
+        text-align: center;
+    }
+    .row{
+        margin-right: auto;
+        margin-left: 20%;
+        margin-top: 5%;
+    }
+    .card{
+        background-color: rgba(255, 255, 255, 0.169);
+    }
+    
+</style>
+<br>
 
-<!-- It will refrence the favourite.ejs page it will get data from the database -->
-<!-- Must do a join table between users and anime -->
-<a href="/users/favorites"><h3>My Favourite</h3></a>
+<h2>Hello, <span> <%= user.userName%></span>  :)</h2>
 
-<!-- It will refrence the reviews.ejs page it will get data from the database -->
-<!-- Must do a join table between users and reviwes MAYBE LATER NO NEED NOW -->
-<!-- <a href="/userReviews"><h3>My Reviews</h3></a> -->
-<a href="/users/userReviews">My Reviews</a>
+<div class="row">
+    <div class="col-sm-5">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">My Favourite Anime ⭐</h5>
+          <p class="card-text">Visit your Favorite anime page.</p>
+          <a href="/users/favorites" class="btn btn-primary">Visit</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-5">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">My Reviews 📝</h5>
+          <p class="card-text">View all reviews, edit or delete them</p>
+          <a href="/users/userReviews" class="btn btn-primary">Visit</a>
+        </div>
+      </div>
+    </div>
+  </div>

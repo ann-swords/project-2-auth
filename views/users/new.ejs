@@ -1,12 +1,36 @@
-<form action="/users" method="POST">
-    <label for="name">Username</label>
-    <input type="text" name="name" id="name" required>
+<style>
+    #sign-up{
+        width: 30%;
+        background-color: rgba(255, 255, 255, 0.196);
+        border-radius: 15px;
+        margin-left: 36%;
+        margin-top: 35px;
+        padding: 35px;
+    }
+    .form-control{
+        width: 100%;
+    }
+</style>
+<br>
+<h3 style="text-align:center; color: rgb(255, 186, 67)">Sign Up</h3>
 
-    <label for="email">Email:</label>
-    <input type="email" name="email" id="email">
+<form action="/users" method="POST" id="sign-up">
 
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="password">
+    <div class="mb-3">
+        <label for="name" class="form-label">Username</label>
+        <input type="text" name="name" id="name"  class="form-control"  aria-label="Username" required>
+      </div>
 
-    <button type="submit">Sign Up</button>
-</form>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required>
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" name="password" id="password" required>
+    </div>
+    
+    <button type="submit" class="btn bg-info">Sign Up</button>
+  </form>
