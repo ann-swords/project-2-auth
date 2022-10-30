@@ -1,11 +1,25 @@
-<h1>Your Search</h1>
+<style>
+ .card{
+   display: inline-block;
+   margin: 5px;
+   font-size: 12px;
+ }
+ img{
+    height: 250px;
+ }
+</style>
 
-<ul>
+<h1>You Searched For: <%=userSearch%></h1>
+
+<div id="anime-search-cards">
     <%animeRec.forEach((t, id)=>{%>
         <%let anime_id = t.mal_id %>
-        <a href="/details/<%=anime_id %>"> 
-        <li><%=t.title%></li>
-        </a>
-   <% })%>
+    <div class="card" style="width: 12rem;">
+        <img src="<%=t.images.jpg.image_url%>" class="card-img-top" alt="...">
+        <div class="card-body">
+            <a href="/details/<%=anime_id %>" class="card-link"><%=t.title%></a>
+        </div>
+      </div>
+    <% })%>
 
-</ul>
+</div>

@@ -20,13 +20,14 @@ router.get('/', (req, res)=>{
 
     //displays the search results.
 router.get('/results', (req, res)=>{
+    let userSearch = req.query.searchAnime
     let animeUrl = `https://api.jikan.moe/v4/anime?q=${req.query.searchAnime}`
     // Use request to call the API
     axios.get(animeUrl)
     .then(apiResponse => {
         let anime = apiResponse.data.data
         // console.log(apiResponse.data.data)
-        res.render('results.ejs', {animeRec: anime})
+        res.render('results.ejs', {animeRec: anime, userSearch})
     })
     .catch(err=>res.send(err))
     })

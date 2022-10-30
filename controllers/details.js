@@ -55,6 +55,10 @@ router.get('/:anime_id', async (req, res)=>{
 
 //Add a new review to the anime page
 router.post('/:anime_id', async (req, res)=>{
+    if (req.body.user_id === null) {
+        render('main/404')
+    }
+    else{
     db.review.create({
         title: req.body.title,
         content: req.body.content,
@@ -68,6 +72,7 @@ router.post('/:anime_id', async (req, res)=>{
     .catch((error) => {
     res.status(400).render('main/404')
     })
+}
 })
 
 
