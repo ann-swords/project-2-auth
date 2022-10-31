@@ -1,16 +1,45 @@
-<!-- List user's favourite anime here! -->
+<style>
+    #anime-search-cards{
+        padding-left: 75px;
+    }
+    .card{
+        display: inline-block;
+        margin: 10px;
 
+    }
+    img{
+        height: 300px;
+    }
+    a:link { 
+        text-decoration: none; 
+    }
+    .card-body{
+        font-size: 13px;
+        text-align: center;
+        text-overflow: ellipsis;
+        overflow: hidden; 
+        white-space: nowrap;
+        color: white;
+    }
+</style>
+
+
+
+<!-- List user's favourite anime here! -->
 <h1>My favorite Anime</h1>
 <hr>
 
-<ul>
+<div id="anime-search-cards">
     <%anime.forEach((fav)=>{%> 
-
-        <div>
-            <a href="/details/<%=fav.aniListId %>">
-                <img src="<%= fav.image%> " alt="<%=fav.name%> poster">
-                <li> <%=fav.name%> </li>
-             </a>
+        
+        <a href="/details/<%=fav.aniListId %>">
+    <div class="card bg-dark" style="width: 12rem;">
+        <img src="<%= fav.image%> " alt="<%=fav.name%> poster" class="card-img-top">
+        <div class="card-body">
+            <%=fav.name%>
         </div>
-    <%}) %>
-</ul> 
+      </div>
+    </a>    
+    <% })%>
+
+</div>

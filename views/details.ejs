@@ -1,20 +1,41 @@
 <style>
-   
+   #fav-btn{
+    display: flex;
+    justify-content: left;
+   }
+   #fav{
+    margin-left: 20px;
+    margin-top: 10px;
+   }
+
+   #rev-btn{
+    display: flex;
+    justify-content: left;
+   }
+   #rev{
+    margin-left: 20px;
+    margin-top: 10px;
+   }
+
+
 </style>
 <!-- Anime Details will be here: -->
 
 <!-- Add more details for anime later... -->
 <br>
-<h1><%=animeRec.title%></h1>
 
 <!-- include add to favourite btton! -->
+
 <!-- It should save only the anime name, image and ID and user ID! -->
-<form action="/details/addToFavorite/<%=animeRec.mal_id%>" method="POST">
-    <input type="hidden" value="<%=animeRec.mal_id %>" name="anime_id">
-    <input type="hidden" value="<%=animeRec.title %>" name="name">
-    <input type="hidden" value="<%=animeRec.images.jpg.image_url %>" name="image">
-    <button type="submit">Add To Favourite</button>
-</form>
+<div id="fav-btn">
+    <h1><%=animeRec.title%></h1>
+    <form  action="/details/addToFavorite/<%=animeRec.mal_id%>" method="POST">
+        <input type="hidden" value="<%=animeRec.mal_id %>" name="anime_id">
+        <input type="hidden" value="<%=animeRec.title %>" name="name">
+        <input type="hidden" value="<%=animeRec.images.jpg.image_url %>" name="image">
+        <button type="submit" class="btn btn-warning" id="fav">Add To Favourite</button>
+    </form>
+</div>
 
 <hr>
 <li><img src="<%=animeRec.images.jpg.image_url%>" alt="anime"></li>
@@ -30,12 +51,16 @@ src="<%=animeRec.trailer.embed_url%>">
 
 
 <hr>
-
-<h1>Reviews: </h1>
+<div id="rev-btn">
+    <h1>Reviews: </h1>
 <form action="/reviews/new" method="GET">
     <input type="hidden" value="<%=animeRec.mal_id %>" name="anime_id">
-   <button type="submit">Write a Review</button>
+   <button type="submit" class="btn btn-warning" id="rev">Add a Review</button>
 </form>
+    
+</div>
+<br>
+
 
 <!-- List the review here! -->
 <ul>

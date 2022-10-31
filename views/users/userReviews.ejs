@@ -1,6 +1,19 @@
-<h1>My Reviews</h1>
+<style>
+    #butns{
+        display: flex;
+        justify-content: left;
+    }
+    #del{
+        margin-left: 20px;
+    }
+    #rev{
+        background-color: rgba(167, 167, 167, 0.272);
+    }
+</style>
 
-<ul>
+<h1>My Reviews</h1>
+<hr>
+<ul id="rev">
     <%reviews.forEach((review)=>{%>
         <li><a href="/details/<%=review.animeId%>">Anime Details</a></li>
         <li>Content: <%=review.content%></li>
@@ -8,12 +21,14 @@
             <strong><%= moment(review.createdAt).calendar() %></strong>
         </p>
 
-        <a href="/reviews/edit/<%=review.id%>">Edit Review</a>
+        <div id="butns">
+            <a href="/reviews/edit/<%=review.id%>" class="btn btn-info">Edit Review</a>
 
         <!-- add the delete review button -->
         <form method="POST" action="/reviews/delete/<%=review.id%>/?_method=DELETE">
-            <input type="submit" value="Delete Review">
+            <input type="submit" value="Delete Review" class="btn btn-danger" id="del">
         </form>
         <hr>
+        </div>
     <%})%>
 </ul>
