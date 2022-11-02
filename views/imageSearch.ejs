@@ -1,19 +1,37 @@
-<h1>Where This Anime From?</h1>
+<style>
+  #imggg{
+    width: 450px;
+  }
+  #cardd{
+      width: 70%;
+      margin-left: 15%;
+      background-color: rgba(255, 255, 255, 0.324);
+      padding: 10px;
+  }
+</style>
+
+<h1>Where This Anime Scene From?</h1>
 <hr>
-<h1>Anime Name- English: <%=pic.result[0].anilist.title.english%></h1>
-<h1>Anime Name- Romaji: <%=pic.result[0].anilist.title.romaji%></h1>
-<h1>Synonyms: <%=pic.result[0].anilist.synonyms%></h1>
 
-<h1>Episode: <%=pic.result[0].episode%></h1>
-<h1>From: <%=pic.result[0].from%></h1>
-<h1>To: <%=pic.result[0].to%></h1>
 
-<video width="320" height="240" controls>
+<div class="card" id="cardd">
+  <div class="card-body">
+    <h4 class="card-title">Anime Name: <%=pic.result[0].anilist.title.english%></h4>
+    <hr>
+    <br>
+    <p class="card-text">Anime Name- Romaji: <%=pic.result[0].anilist.title.romaji%></p>
+    <p class="card-text">Episode: <%=pic.result[0].episode%></p>
+    <p class="card-text">From: <%=pic.result[0].from%></p>
+    <p class="card-text">From: <%=pic.result[0].to%></p>
+  </div>
+  <p class="card-text">Your Search Image</p>
+  <img src="<%=pic.result[0].image%>" alt="anime" id="imggg">
+  <br>
+  <p class="card-text">The Scene</p>
+  <video width="320" height="240" controls>
     <source src="<%=pic.result[0].video%>" type="video/mp4">
     Your browser does not support the video tag.
   </video>
+  <br>
 
-<img src="<%=pic.result[0].image%>" alt="anime">
-
-<hr>
-
+</div>
