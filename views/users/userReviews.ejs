@@ -8,27 +8,34 @@
     }
     #rev{
         background-color: rgba(167, 167, 167, 0.272);
+        padding: 20px;
+        width: 70%;
+        margin-left: 20px;
     }
+
 </style>
 
 <h1>My Reviews</h1>
 <hr>
-<ul id="rev">
-    <%reviews.forEach((review)=>{%>
-        <li><a href="/details/<%=review.animeId%>">Anime Details</a></li>
-        <li>Content: <%=review.content%></li>
-        <p>
-            <strong><%= moment(review.createdAt).calendar() %></strong>
-        </p>
-
-        <div id="butns">
-            <a href="/reviews/edit/<%=review.id%>" class="btn btn-info">Edit Review</a>
-
-        <!-- add the delete review button -->
-        <form method="POST" action="/reviews/delete/<%=review.id%>/?_method=DELETE">
-            <input type="submit" value="Delete Review" class="btn btn-danger" id="del">
-        </form>
-        <hr>
+<%reviews.forEach((review)=>{%>
+    
+    <ul id="rev">
+        <div class="revCont">
+            <li><a href="/details/<%=review.animeId%>">Anime Details</a></li>
+            <li>Content: <%=review.content%></li>
+            <p>
+                <strong><%= moment(review.createdAt).calendar() %></strong>
+            </p>
+    
+            <div id="butns">
+                <a href="/reviews/edit/<%=review.id%>" class="btn btn-info">Edit Review</a>
+    
+            <!-- add the delete review button -->
+            <form method="POST" action="/reviews/delete/<%=review.id%>/?_method=DELETE">
+                <input type="submit" value="Delete Review" class="btn btn-danger" id="del">
+            </form>
+            <hr>
+            </div>
         </div>
+    </ul>
     <%})%>
-</ul>
